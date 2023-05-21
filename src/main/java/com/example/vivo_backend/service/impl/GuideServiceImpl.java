@@ -48,14 +48,13 @@ public class GuideServiceImpl implements GuideService {
         try{
             QueryWrapper<Guide> wrapper = new QueryWrapper<>();
             wrapper.eq("user_id", userId);
-            List<Guide> guides = guideMapper.selectList(wrapper);
+            return guideMapper.selectList(wrapper);
 //            List<Guide> result = new ArrayList<>(guides.size());
 
 //            for (Guide guide : guides) {
 //                GuideVO guideVO = guide.toGuideVO();
 //                result.add(guideVO);
 //            }
-            return guides;
         }catch (Exception e){
             e.printStackTrace();
             throw new NotFoundException(e.getMessage());
@@ -67,8 +66,7 @@ public class GuideServiceImpl implements GuideService {
         try{
             QueryWrapper<Guide> wrapper = new QueryWrapper<>();
             wrapper.eq("card_id", cardId);
-            List<Guide> guides = guideMapper.selectList(wrapper);
-            return guides;
+            return guideMapper.selectList(wrapper);
         }catch (Exception e){
             e.printStackTrace();
             throw new NotFoundException(e.getMessage());
