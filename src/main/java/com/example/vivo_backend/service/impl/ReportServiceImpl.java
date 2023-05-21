@@ -7,6 +7,7 @@ import com.example.vivo_backend.service.ReportService;
 import com.example.vivo_backend.service.ReviewService;
 import com.example.vivo_backend.vo.GuideVO;
 import com.example.vivo_backend.vo.ReportVO;
+import com.example.vivo_backend.vo.Review.RealReviewVO;
 import com.example.vivo_backend.vo.TagVO;
 import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,10 +36,10 @@ public class ReportServiceImpl implements ReportService {
     private ReviewService reviewService;
     @Override
     public ReportVO getReviewReport(int userId) {
-        List<Review> reviews = reviewService.getReviewListByUserId(userId);
+        List<RealReviewVO> reviews = reviewService.getReviewListByUserId(userId);
         List<TagVO>tagVOS = initTagVOList();
-        for(Review review: reviews){
-            tagVOS.get(tags.get(review.getType())).addOne();
+        for(RealReviewVO realReviewVO: reviews){
+            tagVOS.get(tags.get(realReviewVO.getType())).addOne();
         }
         return new ReportVO(tagVOS);
     }

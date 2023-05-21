@@ -2,7 +2,8 @@ package com.example.vivo_backend.controller;
 
 import com.example.vivo_backend.entity.Review;
 import com.example.vivo_backend.service.ReviewService;
-import com.example.vivo_backend.vo.ReviewVO;
+import com.example.vivo_backend.vo.Review.RealReviewVO;
+import com.example.vivo_backend.vo.Review.ReviewVO;
 import com.example.vivo_backend.vo.ResponseVO;
 
 import io.swagger.annotations.Api;
@@ -24,21 +25,21 @@ public class ReviewController {
     @GetMapping("/getByReviewId")
     @ApiOperation(value = "提供游记id获取当前游记",notes = "游记结构(int reviewId, int userId, int cardId, String type, Date planTime, String reviewContent)" )
     @ApiParam(name = "reviewId", value = "游记Id", required = true)
-    public ResponseVO<ReviewVO> getReviewByReviewId(int reviewId){
+    public ResponseVO<RealReviewVO> getReviewByReviewId(int reviewId){
         return new ResponseVO<>(reviewService.getReviewByReviewId(reviewId));
     }
 
     @GetMapping("/getListByUserId")
     @ApiOperation(value = "提供用户id获取所有列表",notes = "游记结构(int reviewId, int userId, int cardId, String type, Date planTime, String reviewContent)" )
     @ApiParam(name = "userId", value = "用户Id", required = true)
-    public ResponseVO<List<Review>> getReviewListByUserId(int userId){
+    public ResponseVO<List<RealReviewVO>> getReviewListByUserId(int userId){
         return new ResponseVO<>(reviewService.getReviewListByUserId(userId));
     }
 
     @GetMapping("/getListByCardId")
     @ApiOperation(value = "提供卡片id获取所有游记列表",notes = "游记结构(int reviewId, int userId, int cardId, String type, Date realTime, String reviewContent)" )
     @ApiParam(name = "cardId", value = "卡片Id", required = true)
-    public ResponseVO<List<Review>> getReviewListByCardId(int cardId){
+    public ResponseVO<List<RealReviewVO>> getReviewListByCardId(int cardId){
         return new ResponseVO<>(reviewService.getReviewListByCardId(cardId));
     }
 

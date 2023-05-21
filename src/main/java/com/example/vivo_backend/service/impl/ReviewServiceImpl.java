@@ -8,10 +8,12 @@ import com.example.vivo_backend.exception.NotFoundException;
 import com.example.vivo_backend.mapper.PictureMapper;
 import com.example.vivo_backend.mapper.ReviewMapper;
 import com.example.vivo_backend.service.ReviewService;
-import com.example.vivo_backend.vo.ReviewVO;
+import com.example.vivo_backend.vo.Review.RealReviewVO;
+import com.example.vivo_backend.vo.Review.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -23,17 +25,24 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     private PictureMapper pictureMapper;
 
+    public List<String> getPicUrlsByReviewId(int reviewId){
+        QueryWrapper<Picture> wrapper = new QueryWrapper<>();
+        wrapper.eq("review_id", reviewId);
+        List<Picture> pictures = pictureMapper.selectList(wrapper);
+        List<String> result = new ArrayList<>();
+        for(Picture picture: pictures){
+            result.add(picture.getPictureUrl());
+        }
+        return result;
+    }
+
     public void setAbsentPicture(int reviewId){
-        System.out.println(reviewId);
         QueryWrapper<Picture> wrapper = new QueryWrapper<>();
         wrapper.eq("review_id", -1);
         List<Picture> pictures = pictureMapper.selectList(wrapper);
-        System.out.println(pictures.size());
         for(Picture picture: pictures) {
             picture.setReviewId(reviewId);
             pictureMapper.updateById(picture);
-            System.out.println(picture.getPictureId()+" "+picture.getReviewId());
-
         }
     }
     @Override
@@ -59,20 +68,29 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public ReviewVO getReviewByReviewId(int reviewId) {
+    public RealReviewVO getReviewByReviewId(int reviewId) {
         Review review = reviewMapper.selectById(reviewId);
         if(review==null){
             throw new BadRequestException("没有相应的review");
         }
-        return review.toReviewVO();
+        List<String> urls = getPicUrlsByReviewId(reviewId);
+        return new RealReviewVO(review, urls);
     }
 
+
+
     @Override
-    public List<Review> getReviewListByUserId(int userId) {
+    public List<RealReviewVO> getReviewListByUserId(int userId) {
         try{
             QueryWrapper<Review> wrapper = new QueryWrapper<>();
-            wrapper.eq("user_id",userId);
-            return reviewMapper.selectList(wrapper);
+            wrapper.eq("user_id", userId);
+            List<Review> reviews = reviewMapper.selectList(wrapper);
+            List<RealReviewVO> result = new ArrayList<>();
+            for(Review review: reviews){
+                List<String> picUrls = getPicUrlsByReviewId(review.getReviewId());
+                result.add(new RealReviewVO(review, picUrls));
+            }
+            return result;
         }catch (Exception e){
             e.printStackTrace();
             throw new NotFoundException(e.getMessage());
@@ -80,11 +98,17 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public List<Review> getReviewListByCardId(int cardId) {
+    public List<RealReviewVO> getReviewListByCardId(int cardId) {
         try{
             QueryWrapper<Review> wrapper = new QueryWrapper<>();
             wrapper.eq("card_id",cardId);
-            return reviewMapper.selectList(wrapper);
+            List<Review> reviews = reviewMapper.selectList(wrapper);
+            List<RealReviewVO> result = new ArrayList<>();
+            for(Review review: reviews){
+                List<String> picUrls = getPicUrlsByReviewId(review.getReviewId());
+                result.add(new RealReviewVO(review, picUrls));
+            }
+            return result;
         }catch (Exception e){
             e.printStackTrace();
             throw new NotFoundException(e.getMessage());

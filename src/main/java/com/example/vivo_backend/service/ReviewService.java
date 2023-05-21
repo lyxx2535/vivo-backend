@@ -1,7 +1,7 @@
 package com.example.vivo_backend.service;
 
-import com.example.vivo_backend.entity.Review;
-import com.example.vivo_backend.vo.ReviewVO;
+import com.example.vivo_backend.vo.Review.RealReviewVO;
+import com.example.vivo_backend.vo.Review.ReviewVO;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ public interface ReviewService {
     void addReview(ReviewVO reviewVO);
     void deleteReview(int reviewId);
     void updateReview(ReviewVO reviewVO);
-    ReviewVO getReviewByReviewId(int reviewId);
-    List<Review> getReviewListByUserId(int userId);
-    List<Review> getReviewListByCardId(int cardId);
+    RealReviewVO getReviewByReviewId(int reviewId);
+    List<RealReviewVO> getReviewListByUserId(int userId);
+    List<RealReviewVO> getReviewListByCardId(int cardId);
 }

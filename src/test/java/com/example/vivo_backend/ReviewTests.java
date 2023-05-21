@@ -2,7 +2,8 @@ package com.example.vivo_backend;
 
 import com.example.vivo_backend.controller.ReviewController;
 import com.example.vivo_backend.entity.Review;
-import com.example.vivo_backend.vo.ReviewVO;
+import com.example.vivo_backend.vo.Review.RealReviewVO;
+import com.example.vivo_backend.vo.Review.ReviewVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,8 +33,8 @@ public class ReviewTests {
         reviewController.addReview(reviewVO3);
         reviewController.addReview(reviewVO4);
 
-        List<Review> user0Reviews = reviewController.getReviewListByUserId(0).getData();
-        List<Review>card100Reviews = reviewController.getReviewListByCardId(100).getData();
+        List<RealReviewVO> user0Reviews = reviewController.getReviewListByUserId(0).getData();
+        List<RealReviewVO>card100Reviews = reviewController.getReviewListByCardId(100).getData();
 
 
         Assertions.assertEquals(user0Reviews.size(),4);
@@ -41,8 +42,8 @@ public class ReviewTests {
 
         reviewController.deleteReview(user0Reviews.get(0).getReviewId());
 
-        List<Review>user0NewReviews = reviewController.getReviewListByUserId(0).getData();
-        List<Review>card100NewReviews = reviewController.getReviewListByCardId(100).getData();
+        List<RealReviewVO>user0NewReviews = reviewController.getReviewListByUserId(0).getData();
+        List<RealReviewVO>card100NewReviews = reviewController.getReviewListByCardId(100).getData();
         Assertions.assertEquals(user0NewReviews.size(),3);
         Assertions.assertEquals(card100NewReviews.size(),1);
 
