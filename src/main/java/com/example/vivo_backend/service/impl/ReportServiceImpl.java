@@ -1,6 +1,7 @@
 package com.example.vivo_backend.service.impl;
 
 import com.example.vivo_backend.entity.Guide;
+import com.example.vivo_backend.entity.Review;
 import com.example.vivo_backend.service.GuideService;
 import com.example.vivo_backend.service.ReportService;
 import com.example.vivo_backend.service.ReviewService;
@@ -34,8 +35,12 @@ public class ReportServiceImpl implements ReportService {
     private ReviewService reviewService;
     @Override
     public ReportVO getReviewReport(int userId) {
-
-        return null;
+        List<Review> reviews = reviewService.getReviewListByUserId(userId);
+        List<TagVO>tagVOS = initTagVOList();
+        for(Review review: reviews){
+            tagVOS.get(tags.get(review.getType())).addOne();
+        }
+        return new ReportVO(tagVOS);
     }
 
     @Override
