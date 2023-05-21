@@ -22,7 +22,6 @@ public class UserController {
     @PostMapping("/login")
     @ApiOperation(value = "用户登录",
                 notes = "该方法会1.检查数据库中是否有对应账号 2.检查密码是否一致; 正确则返回userid")
-    @ApiImplicitParam(name="userVO", value = "登录信息表单(username:username, password:password)", required = true)
     public ResponseVO<Integer> login(@RequestBody UserVO userVO) {
         return new ResponseVO<>(userService.login(userVO));
     }
@@ -30,9 +29,7 @@ public class UserController {
     @PostMapping("/register")
     @ApiOperation(value = "用户注册",
             notes = "该方法会检查数据库中是否有对应账号 返回错误提示/true(目前全部返回true)")
-    @ApiImplicitParam(name="userVO", value = "注册信息表单(username:username, password:password)", required = true)
     public void register(@RequestBody UserVO userVO) {
-        System.out.println(userVO.toString());
         userService.register(userVO);
     }
 
