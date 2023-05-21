@@ -7,21 +7,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Date;
-import java.util.List;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-@TableName("review")
-public class Review {
+@TableName("picture")
+public class Picture {
     @TableId
+    private int pictureId;
     private int reviewId;
-    private int userId;
-    private int cardId;
-    private String title;
-    private String type;
-    private Date realTime;
-    private String reviewContent;
+    private String picUrl;
 }
