@@ -1,4 +1,5 @@
 use vivo;
+drop table if exists picture;
 create table picture(
     `picture_id` INT PRIMARY KEY AUTO_INCREMENT ,
     `review_id` INT NOT NULL ,

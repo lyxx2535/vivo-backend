@@ -1,9 +1,11 @@
 package com.example.vivo_backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.vivo_backend.entity.Picture;
 import com.example.vivo_backend.entity.Review;
 import com.example.vivo_backend.exception.BadRequestException;
 import com.example.vivo_backend.exception.NotFoundException;
+import com.example.vivo_backend.mapper.PictureMapper;
 import com.example.vivo_backend.mapper.ReviewMapper;
 import com.example.vivo_backend.service.ReviewService;
 import com.example.vivo_backend.vo.ReviewVO;
@@ -18,15 +20,31 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     private ReviewMapper reviewMapper;
 
-    public void setAbsentPicture(String reviewId){
+    @Autowired
+    private PictureMapper pictureMapper;
 
+    public void setAbsentPicture(int reviewId){
+        System.out.println(reviewId);
+        QueryWrapper<Picture> wrapper = new QueryWrapper<>();
+        wrapper.eq("review_id", -1);
+        List<Picture> pictures = pictureMapper.selectList(wrapper);
+        System.out.println(pictures.size());
+        for(Picture picture: pictures) {
+            picture.setReviewId(reviewId);
+            pictureMapper.updateById(picture);
+            System.out.println(picture.getPictureId()+" "+picture.getReviewId());
+
+        }
     }
     @Override
     public void addReview(ReviewVO reviewVO) {
         Review review = reviewVO.toReview();
         reviewMapper.insert(review);
-        reviewMapper.
-        setAbsentPicture();
+        //获得最新加入的review的reviewId
+        QueryWrapper<Review> wrapper = new QueryWrapper<>();
+        List<Review> reviews = reviewMapper.selectList(wrapper.orderByDesc("review_id"));
+        //补全picture缺失的reviewId
+        setAbsentPicture(reviews.get(0).getReviewId());
     }
 
     @Override

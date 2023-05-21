@@ -16,6 +16,7 @@ public class PictureServiceImpl implements PictureService {
     public void addPicture(String pictureUrl){
         Picture picture = new Picture();
         picture.setPictureUrl(pictureUrl);
+        picture.setReviewId(-1);
         pictureMapper.insert(picture);
     }
 }
