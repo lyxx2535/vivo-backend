@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @ApiModel
 public class UserVO {
-    @ApiModelProperty(value = "用户名", example = "123456")
+    @ApiModelProperty(value = "用户名", example = "lyx")
     private String username;
     @ApiModelProperty(value = "密码", example = "123456")
     private String password;

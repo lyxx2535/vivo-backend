@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public Long login(UserVO loginForm) {
+    public int login(UserVO loginForm) {
         String username = loginForm.getUsername(), password = loginForm.getPassword();
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("username", username);
@@ -45,6 +45,7 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Boolean existsTheUsername(String username) {
+        System.out.println(username);
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("username", username);
 
@@ -56,6 +57,7 @@ public class UserServiceImpl implements UserService {
     public void register(UserVO registerForm) {
         if (existsTheUsername(registerForm.getUsername()))
             throw new BadRequestException("该用户名已经存在！");
+        System.out.println("here");
         User user = registerForm.toUser();
         userMapper.insert(user);
     }

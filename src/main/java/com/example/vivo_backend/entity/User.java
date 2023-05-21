@@ -1,6 +1,7 @@
 package com.example.vivo_backend.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,9 +15,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@TableName("user")
 public class User extends Model<User> {
     @TableId
-    private Long id;            // id
+    private int id;            // id
     private String username;    // 用户名
     private String password;    // 密码
 }
