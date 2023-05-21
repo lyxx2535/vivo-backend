@@ -2,6 +2,8 @@ package com.example.vivo_backend;
 
 import com.example.vivo_backend.controller.GuideController;
 import com.example.vivo_backend.entity.Guide;
+import com.example.vivo_backend.exception.BadRequestException;
+import com.example.vivo_backend.exception.NotFoundException;
 import com.example.vivo_backend.vo.GuideVO;
 import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Assertions;
@@ -20,7 +22,7 @@ public class GuideTests {
     GuideController guideController;
 
     @Test
-    @Rollback(value = true)
+    @Rollback
     @Transactional
     void guideTest(){
         GuideVO guideVO1 = new GuideVO(0,100,"自然景点",new Date(368799399),"7：00起床看日出");
@@ -49,6 +51,26 @@ public class GuideTests {
         String[] actualTypes = {"美食", "人文景点", "自然景点", "购物", "商务", "运动", "其他"};
         String []types = guideController.getTypes().getData();
         Assertions.assertEquals(types[3],actualTypes[3]);
+
+        try{
+            guideController.getGuideByGuideId(-1);
+            Assertions.assertEquals(0,1);
+        }catch (BadRequestException e){
+            Assertions.assertEquals("没有相应的guide",e.getMessage());
+        }
+
+        try{
+            guideController.getGuideListByUserId(-1);
+            Assertions.assertEquals(0,1);
+        }catch (NotFoundException e){
+            Assertions.assertEquals("该用户没有攻略",e.getMessage());
+        }
+        try{
+            guideController.getGuideListByCardId(-1);
+            Assertions.assertEquals(0,1);
+        }catch (NotFoundException e){
+            Assertions.assertEquals("该卡片没有攻略",e.getMessage());
+        }
 
 
     }

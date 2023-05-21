@@ -45,31 +45,23 @@ public class GuideServiceImpl implements GuideService {
 
     @Override
     public List<Guide> getGuideListByUserId(int userId) {
-        try{
             QueryWrapper<Guide> wrapper = new QueryWrapper<>();
             wrapper.eq("user_id", userId);
-            return guideMapper.selectList(wrapper);
-//            List<Guide> result = new ArrayList<>(guides.size());
-
-//            for (Guide guide : guides) {
-//                GuideVO guideVO = guide.toGuideVO();
-//                result.add(guideVO);
-//            }
-        }catch (Exception e){
-            e.printStackTrace();
-            throw new NotFoundException(e.getMessage());
-        }
+            List<Guide> guides = guideMapper.selectList(wrapper);
+            if(guides == null || guides.isEmpty()){
+                throw new NotFoundException("该用户没有攻略");
+            }
+            return guides;
     }
 
     @Override
     public List<Guide> getGuideListByCardId(int cardId) {
-        try{
             QueryWrapper<Guide> wrapper = new QueryWrapper<>();
             wrapper.eq("card_id", cardId);
-            return guideMapper.selectList(wrapper);
-        }catch (Exception e){
-            e.printStackTrace();
-            throw new NotFoundException(e.getMessage());
+        List<Guide> guides = guideMapper.selectList(wrapper);
+        if(guides == null || guides.isEmpty()){
+            throw new NotFoundException("该卡片没有攻略");
         }
+        return guides;
     }
 }

@@ -22,11 +22,4 @@ public class Card {
     private String city;
     private Date createTime;
 
-    public CardVO toCardVO(){
-        CardVO cardVO = new CardVO();
-        cardVO.setUserId(userId);
-        cardVO.setCity(city);
-        cardVO.setCreateTime(createTime);
-        return cardVO;
-    }
 }
