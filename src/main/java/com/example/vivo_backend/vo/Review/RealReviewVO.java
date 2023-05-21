@@ -39,7 +39,7 @@ public class RealReviewVO {
         title = review.getTitle();
         type = review.getType();
         realTime = review.getRealTime();
-        reviewContent = getReviewContent();
+        reviewContent = review.getReviewContent();
         picUrls = urls;
     }
 
