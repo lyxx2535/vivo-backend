@@ -27,16 +27,6 @@ public class DefaultExceptionHandler {
             response.setStatus(HttpStatus.OK.value());
             return new ErrorMessage(re.getHttpStatus().value() + "", re.getMessage());
         }
-        String subject;
-        String text;
-        if (e instanceof IOException) {//IO异常
-            text = ExceptionUtil.getExceptionDetailInformation(e);
-            subject = "vivo_backend出现了IO异常";
-
-        } else {//其他异常
-            text = ExceptionUtil.getExceptionDetailInformation(e);
-            subject = "vivo_backend出现了未知异常";
-        }
 
         e.printStackTrace();
         throw new Exception("服务器错误！");
