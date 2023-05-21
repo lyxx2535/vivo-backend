@@ -21,14 +21,14 @@ public class UserController {
 
     @PostMapping("/login")
     @ApiOperation(value = "用户登录",
-                notes = "该方法会1.检查数据库中是否有对应账号 2.检查密码是否一致; 正确则返回userid")
+                notes = "该方法会1.检查数据库中是否有对应账号 2.检查密码是否一致; 正确则登录并返回userid")
     public ResponseVO<Integer> login(@RequestBody UserVO userVO) {
         return new ResponseVO<>(userService.login(userVO));
     }
 
     @PostMapping("/register")
     @ApiOperation(value = "用户注册",
-            notes = "该方法会检查数据库中是否有对应账号 返回错误提示/true(目前全部返回true)")
+            notes = "该方法会检查是否有重复的用户名，没有则注册用户")
     public void register(@RequestBody UserVO userVO) {
         userService.register(userVO);
     }
