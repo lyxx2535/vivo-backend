@@ -3,6 +3,7 @@ package com.example.vivo_backend.utils;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.ObjectMetadata;
 import com.aliyun.oss.model.PutObjectResult;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,15 +18,22 @@ import java.util.Random;
 @Component
 public class OssUtil {
     //阿里云OSS地址，这里看根据你的oss选择
-    private String endpoint = "oss-cn-nanjing.aliyuncs.com";
+    @Value("${spring.aliyun.oss.file.endpoint}")
+    private String endpoint;
     //阿里云OSS账号
-    private String accessKeyId = "LTAI5tPUru8Te21FKZaNPr1e";
+    @Value("${spring.aliyun.oss.file.keyid}")
+    private String accessKeyId;
     //阿里云OSS密钥
-    private String accessKeySecret = "QLdTCUQzz0n07VzDYpPtRHj8FrobtU";
+    @Value("${spring.aliyun.oss.file.keysecret}")
+    private String accessKeySecret;
     //阿里云OSS上的存储块bucket名字
-    private String bucketName = "ossforvivobackend";
+    @Value("${spring.aliyun.oss.file.bucketname}")
+    private String bucketName;
     //阿里云图片文件存储目录
+    @Value("${spring.aliyun.oss.file.filedir}")
     private String filedir = "val/";
+    //避免每次需要随机数时都建立新常量，创建一个常量
+    private static final Random RANDOM = new Random();
 
 
     /**
@@ -37,11 +45,12 @@ public class OssUtil {
         if (file.getSize() > 1024 * 1024 *20) { //20M
             return "图片太大";
         }
-        String originalFilename = file.getOriginalFilename();
-        String substring = originalFilename.substring(originalFilename.lastIndexOf(".")).toLowerCase();
-        Random random = new Random();
-        String name = random.nextInt(10000) + System.currentTimeMillis() + substring;
+
         try {
+            //为避免空指针异常，将代码放进try-catch
+            String originalFilename = file.getOriginalFilename();
+            String substring = originalFilename.substring(originalFilename.lastIndexOf(".")).toLowerCase();
+            String name = RANDOM.nextInt(10000) + System.currentTimeMillis() + substring;
             InputStream inputStream = file.getInputStream();
             this.uploadFile2OSS(inputStream, name);
             return name;//RestResultGenerator.createSuccessResult(name);
