@@ -9,7 +9,7 @@ public interface CardService {
     void addCard(CardVO cardVO);
     void deleteCard(int cardId);
     void updateCard(CardVO cardVO);
-    CardVO getCard(int cardId);
+    Card getCard(int cardId);
 
     List<Card> getAllCard(int userId);
 }

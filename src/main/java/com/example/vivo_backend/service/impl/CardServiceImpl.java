@@ -41,12 +41,12 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public CardVO getCard(int cardId) {
+    public Card getCard(int cardId) {
         Card card = cardMapper.selectById(cardId);
         if(card == null){
             throw new BadRequestException("没有相应的card");
         }
-        return card.toCardVO();
+        return card;
     }
 
     @Override
