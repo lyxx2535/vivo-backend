@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @TableName("user")
 public class User extends Model<User> {
     @TableId
-    private int id;            // id
+    private int userId;            // id
     private String username;    // 用户名
     private String password;    // 密码
 }

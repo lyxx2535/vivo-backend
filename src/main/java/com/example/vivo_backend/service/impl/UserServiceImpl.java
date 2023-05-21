@@ -6,13 +6,8 @@ import com.example.vivo_backend.exception.BadRequestException;
 import com.example.vivo_backend.mapper.UserMapper;
 import com.example.vivo_backend.service.UserService;
 import com.example.vivo_backend.vo.user.UserVO;
-import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -37,7 +32,7 @@ public class UserServiceImpl implements UserService {
         if (password == null || !password.equals(user.getPassword()))
             throw new BadRequestException("密码错误！");
 
-        return user.getId();
+        return user.getUserId();
     }
 
     /**
