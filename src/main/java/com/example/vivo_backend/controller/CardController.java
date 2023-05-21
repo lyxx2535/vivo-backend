@@ -48,7 +48,7 @@ public class CardController {
         cardService.updateCard(cardVO);
     }
 
-    @PostMapping("/all")
+    @GetMapping("/all")
     @ApiOperation(value = "获取某用户所有卡片")
     @ApiParam(name = "cardVO", value = "卡片", required = true)
     public ResponseVO<List<Card>> getAllCard(int userId){
