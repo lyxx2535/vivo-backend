@@ -10,7 +10,6 @@ import com.example.vivo_backend.vo.GuideVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,18 +44,18 @@ public class GuideServiceImpl implements GuideService {
     }
 
     @Override
-    public List<GuideVO> getGuideListByUserId(int userId) {
+    public List<Guide> getGuideListByUserId(int userId) {
         try{
             QueryWrapper<Guide> wrapper = new QueryWrapper<>();
             wrapper.eq("user_id", userId);
             List<Guide> guides = guideMapper.selectList(wrapper);
-            List<GuideVO> result = new ArrayList<>(guides.size());
+//            List<Guide> result = new ArrayList<>(guides.size());
 
-            for (Guide guide : guides) {
-                GuideVO guideVO = guide.toGuideVO();
-                result.add(guideVO);
-            }
-            return result;
+//            for (Guide guide : guides) {
+//                GuideVO guideVO = guide.toGuideVO();
+//                result.add(guideVO);
+//            }
+            return guides;
         }catch (Exception e){
             e.printStackTrace();
             throw new NotFoundException(e.getMessage());
@@ -64,18 +63,12 @@ public class GuideServiceImpl implements GuideService {
     }
 
     @Override
-    public List<GuideVO> getGuideListByCardId(int cardId) {
+    public List<Guide> getGuideListByCardId(int cardId) {
         try{
             QueryWrapper<Guide> wrapper = new QueryWrapper<>();
             wrapper.eq("card_id", cardId);
             List<Guide> guides = guideMapper.selectList(wrapper);
-            List<GuideVO> result = new ArrayList<>(guides.size());
-
-            for (Guide guide : guides) {
-                GuideVO guideVO = guide.toGuideVO();
-                result.add(guideVO);
-            }
-            return result;
+            return guides;
         }catch (Exception e){
             e.printStackTrace();
             throw new NotFoundException(e.getMessage());

@@ -40,10 +40,10 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public ReportVO getGuideReport(int userId) {
-        List<GuideVO> guides = guideService.getGuideListByUserId(userId);
+        List<Guide> guides = guideService.getGuideListByUserId(userId);
         List<TagVO>tagVOS = initTagVOList();
-        for(GuideVO guideVO:guides){
-            tagVOS.get(tags.get(guideVO.getType())).addOne();
+        for(Guide guide: guides){
+            tagVOS.get(tags.get(guide.getType())).addOne();
         }
         return new ReportVO(tagVOS);
     }

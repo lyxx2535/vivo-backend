@@ -10,5 +10,8 @@ public class PictureServiceImpl {
     @Autowired
     private PictureMapper pictureMapper;
 
-    public void addPicture(String pictureUrl)
+//    @Override
+//    public void addPicture(String pictureUrl){
+////        pictureMapper.insert()
+//    }
 }

@@ -16,5 +16,5 @@ public class Picture {
     @TableId
     private int pictureId;
     private int reviewId;
-    private String picUrl;
+    private String pictureUrl;
 }

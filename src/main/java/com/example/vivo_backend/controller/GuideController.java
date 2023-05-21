@@ -1,5 +1,6 @@
 package com.example.vivo_backend.controller;
 
+import com.example.vivo_backend.entity.Guide;
 import com.example.vivo_backend.service.GuideService;
 import com.example.vivo_backend.vo.ResponseVO;
 import com.example.vivo_backend.vo.GuideVO;
@@ -30,14 +31,14 @@ public class GuideController {
     @GetMapping("/getListByUserId")
     @ApiOperation(value = "提供用户id获取所有攻略列表",notes = "攻略结构(int guideId, int userId, int cardId, String type, Date planTime, String guideContent)" )
     @ApiParam(name = "userId", value = "用户Id", required = true)
-    public ResponseVO<List<GuideVO>> getGuideListByUserId(int userId){
+    public ResponseVO<List<Guide>> getGuideListByUserId(int userId){
         return new ResponseVO<>(guideService.getGuideListByUserId(userId));
     }
 
     @GetMapping("/getListByCardId")
     @ApiOperation(value = "提供卡片id获取所有攻略列表",notes = "攻略结构(int guideId, int userId, int cardId, String type, Date planTime, String guideContent)" )
     @ApiParam(name = "cardId", value = "卡片Id", required = true)
-    public ResponseVO<List<GuideVO>> getGuideListByCardId(int cardId){
+    public ResponseVO<List<Guide>> getGuideListByCardId(int cardId){
         return new ResponseVO<>(guideService.getGuideListByCardId(cardId));
     }
 

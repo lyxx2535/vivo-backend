@@ -23,7 +23,6 @@ public class OSSController {
     public String homeImageUpload(@RequestParam("file") MultipartFile file) {
         try {
             String homeImage = ossUtil.checkImage(file);//此处是调用上传服务接口
-            ossUtil
             return homeImage;
         }catch (Exception e) {
             e.printStackTrace();
