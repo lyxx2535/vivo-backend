@@ -11,8 +11,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
@@ -55,7 +57,7 @@ public class UserServiceImpl implements UserService {
         if (existsTheUsername(registerForm.getUsername()))
             throw new BadRequestException("该用户名已经存在！");
         User user = registerForm.toUser();
-
+        userMapper.insert(user);
     }
 
 }
