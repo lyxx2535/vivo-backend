@@ -17,10 +17,16 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Autowired
     private ReviewMapper reviewMapper;
+
+    public void setAbsentPicture(String reviewId){
+
+    }
     @Override
     public void addReview(ReviewVO reviewVO) {
         Review review = reviewVO.toReview();
         reviewMapper.insert(review);
+        reviewMapper.
+        setAbsentPicture();
     }
 
     @Override
