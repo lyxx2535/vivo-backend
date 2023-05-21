@@ -1,14 +1,11 @@
 package com.example.vivo_backend.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.example.vivo_backend.entity.Guide;
-import org.apache.ibatis.annotations.Select;
+import com.example.vivo_backend.entity.Review;
 import org.mapstruct.Mapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Mapper
 @Repository
-public interface GuideMapper extends BaseMapper<Guide> {
+public interface ReviewMapper extends BaseMapper<Review> {
 }
