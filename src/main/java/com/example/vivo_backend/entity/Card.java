@@ -6,13 +6,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Date;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @TableName("card")
 public class Card {
     @TableId
-    private String id;
+    private int cardId;
+    private int userId;
     private String city;
-    private String timestamp;
+    private Date createTime;
 }
