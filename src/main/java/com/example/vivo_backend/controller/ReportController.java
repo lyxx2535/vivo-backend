@@ -24,14 +24,14 @@ public class ReportController {
 
 
     @GetMapping("/guide")
-    @ApiOperation(value = "提供用户id获取攻略中tags数量", notes = "类似{tag:美食, num:1}")
+    @ApiOperation(value = "提供用户id获取攻略中tags数量", notes = "类似[{tag:美食, num:1}]")
     @ApiParam(name="userId",value = "用户ID",required = true)
     public ResponseVO<ReportVO> getGuideReport(int userId){
         return new ResponseVO<>(reportService.getGuideReport(userId));
     }
 
     @GetMapping("/review")
-    @ApiOperation(value = "提供用户id获取游记中tags数量", notes = "类似{tag:美食, num:1}")
+    @ApiOperation(value = "提供用户id获取游记中tags数量", notes = "类似[{tag:美食, num:1}]")
     @ApiParam(name="userId",value = "用户ID",required = true)
     public ResponseVO<ReportVO> getReviewReport(int userId){
         return new ResponseVO<>(reportService.getReviewReport(userId));
