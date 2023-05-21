@@ -1,5 +1,7 @@
 package com.example.vivo_backend.vo.card;
 
+import com.example.vivo_backend.entity.Card;
+import com.example.vivo_backend.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -14,10 +16,10 @@ import java.sql.Date;
 @AllArgsConstructor
 @ApiModel
 public class CardVO {
-    @ApiModelProperty(value = "卡片id", example = "001")
+    @ApiModelProperty(value = "卡片id", example = "1")
     private int cardId;
 
-    @ApiModelProperty(value = "卡片所属用户id", example = "001")
+    @ApiModelProperty(value = "卡片所属用户id", example = "1")
     private int userId;
 
     @ApiModelProperty(value = "所属城市",example = "南京市")
@@ -25,6 +27,15 @@ public class CardVO {
 
     @ApiModelProperty(value = "创建时间", example = "2012-01-20")
     private Date createTime;
+
+    public Card toCard(){
+        return Card.builder()
+                .cardId(cardId)
+                .userId(userId)
+                .city(city)
+                .createTime(createTime)
+                .build();
+    }
 
 
 }

@@ -4,10 +4,10 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
-public class Exception extends RuntimeException {
+public class MyException extends RuntimeException {
     protected HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
 
-    public Exception(String msg) {
+    public MyException(String msg) {
         super(msg);
     }
 }
