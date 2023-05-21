@@ -1,4 +1,4 @@
-package com.example.vivo_backend.vo.card;
+package com.example.vivo_backend.vo;
 
 import com.example.vivo_backend.entity.Card;
 import com.example.vivo_backend.entity.User;

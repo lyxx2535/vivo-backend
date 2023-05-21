@@ -1,12 +1,9 @@
 package com.example.vivo_backend;
 
-import com.baomidou.mybatisplus.extension.api.Assert;
 import com.example.vivo_backend.controller.CardController;
 import com.example.vivo_backend.entity.Card;
 import com.example.vivo_backend.exception.BadRequestException;
-import com.example.vivo_backend.exception.ErrorMessage;
-import com.example.vivo_backend.vo.card.CardVO;
-import net.minidev.json.writer.CollectionMapper;
+import com.example.vivo_backend.vo.CardVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

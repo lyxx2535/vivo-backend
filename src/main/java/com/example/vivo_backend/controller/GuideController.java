@@ -1,10 +1,8 @@
 package com.example.vivo_backend.controller;
 
-import com.example.vivo_backend.service.CardService;
 import com.example.vivo_backend.service.GuideService;
 import com.example.vivo_backend.vo.ResponseVO;
-import com.example.vivo_backend.vo.card.CardVO;
-import com.example.vivo_backend.vo.guide.GuideVO;
+import com.example.vivo_backend.vo.GuideVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

@@ -1,4 +1,4 @@
-package com.example.vivo_backend.vo.guide;
+package com.example.vivo_backend.vo;
 
 import com.example.vivo_backend.entity.Guide;
 import io.swagger.annotations.ApiModel;

@@ -2,16 +2,12 @@ package com.example.vivo_backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.vivo_backend.entity.Card;
-import com.example.vivo_backend.entity.User;
 import com.example.vivo_backend.exception.BadRequestException;
-import com.example.vivo_backend.exception.MyException;
 import com.example.vivo_backend.mapper.CardMapper;
 import com.example.vivo_backend.service.CardService;
-import com.example.vivo_backend.vo.card.CardVO;
+import com.example.vivo_backend.vo.CardVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.example.vivo_backend.service;
 
 import com.example.vivo_backend.entity.Card;
-import com.example.vivo_backend.vo.card.CardVO;
+import com.example.vivo_backend.vo.CardVO;
 
 import java.util.List;
 

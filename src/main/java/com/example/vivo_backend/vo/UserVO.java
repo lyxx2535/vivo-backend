@@ -1,4 +1,4 @@
-package com.example.vivo_backend.vo.user;
+package com.example.vivo_backend.vo;
 
 
 import com.example.vivo_backend.entity.User;

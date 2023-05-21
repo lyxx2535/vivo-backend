@@ -5,7 +5,7 @@ import com.example.vivo_backend.entity.User;
 import com.example.vivo_backend.exception.BadRequestException;
 import com.example.vivo_backend.mapper.UserMapper;
 import com.example.vivo_backend.service.UserService;
-import com.example.vivo_backend.vo.user.UserVO;
+import com.example.vivo_backend.vo.UserVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

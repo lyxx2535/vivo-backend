@@ -2,11 +2,9 @@ package com.example.vivo_backend.controller;
 
 import com.example.vivo_backend.service.UserService;
 import com.example.vivo_backend.vo.ResponseVO;
-import com.example.vivo_backend.vo.user.UserVO;
+import com.example.vivo_backend.vo.UserVO;
 import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

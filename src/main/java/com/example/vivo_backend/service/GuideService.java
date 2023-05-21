@@ -1,6 +1,6 @@
 package com.example.vivo_backend.service;
 
-import com.example.vivo_backend.vo.guide.GuideVO;
+import com.example.vivo_backend.vo.GuideVO;
 
 import java.util.List;
 

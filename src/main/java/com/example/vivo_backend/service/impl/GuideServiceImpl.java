@@ -1,13 +1,12 @@
 package com.example.vivo_backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.vivo_backend.entity.Card;
 import com.example.vivo_backend.entity.Guide;
 import com.example.vivo_backend.exception.BadRequestException;
 import com.example.vivo_backend.exception.NotFoundException;
 import com.example.vivo_backend.mapper.GuideMapper;
 import com.example.vivo_backend.service.GuideService;
-import com.example.vivo_backend.vo.guide.GuideVO;
+import com.example.vivo_backend.vo.GuideVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
