@@ -44,8 +44,23 @@ public class ReviewTests {
 
         List<RealReviewVO>user0NewReviews = reviewController.getReviewListByUserId(0).getData();
         List<RealReviewVO>card100NewReviews = reviewController.getReviewListByCardId(100).getData();
-        Assertions.assertEquals(user0NewReviews.size(),3);
-        Assertions.assertEquals(card100NewReviews.size(),1);
+        Assertions.assertEquals(3, user0NewReviews.size());
+        Assertions.assertEquals(1, card100NewReviews.size());
+
+        int id = user0NewReviews.get(0).getReviewId();
+        Date date = user0NewReviews.get(0).getRealTime();
+
+        RealReviewVO review = reviewController.getReviewByReviewId(id).getData();
+        Assertions.assertEquals(date, review.getRealTime());
+
+        reviewVO1.setReviewContent("newContent");
+        reviewController.updateReview(reviewVO1);
+
+        RealReviewVO newReview = reviewController.getReviewByReviewId(id).getData();
+        Assertions.assertEquals(review.getReviewContent(),newReview.getReviewContent());
+
+
+
 
     }
 

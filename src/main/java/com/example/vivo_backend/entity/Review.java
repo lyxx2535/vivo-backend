@@ -25,14 +25,14 @@ public class Review {
     private Date realTime;
     private String reviewContent;
 
-    public ReviewVO toReviewVO(){
-        ReviewVO reviewVO  =new ReviewVO();
-        reviewVO.setUserId(userId);
-        reviewVO.setCardId(cardId);
-        reviewVO.setReviewContent(reviewContent);
-        reviewVO.setType(type);
-        reviewVO.setRealTime(realTime);
-        reviewVO.setTitle(title);
-        return reviewVO;
-    }
+//    public ReviewVO toReviewVO(){
+//        ReviewVO reviewVO  =new ReviewVO();
+//        reviewVO.setUserId(userId);
+//        reviewVO.setCardId(cardId);
+//        reviewVO.setReviewContent(reviewContent);
+//        reviewVO.setType(type);
+//        reviewVO.setRealTime(realTime);
+//        reviewVO.setTitle(title);
+//        return reviewVO;
+//    }
 }

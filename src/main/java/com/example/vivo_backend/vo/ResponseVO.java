@@ -17,8 +17,4 @@ public class ResponseVO<T> {
         this.msg = "success";
     }
 
-    public ResponseVO(T data, String msg) {
-        this.data = data;
-        this.msg = msg;
-    }
 }
