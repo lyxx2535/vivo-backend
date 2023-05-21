@@ -24,7 +24,6 @@ public class Card {
 
     public CardVO toCardVO(){
         CardVO cardVO = new CardVO();
-        cardVO.setCardId(cardId);
         cardVO.setUserId(userId);
         cardVO.setCity(city);
         cardVO.setCreateTime(createTime);

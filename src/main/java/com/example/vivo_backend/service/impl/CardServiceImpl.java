@@ -2,6 +2,7 @@ package com.example.vivo_backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.vivo_backend.entity.Card;
+import com.example.vivo_backend.entity.User;
 import com.example.vivo_backend.exception.BadRequestException;
 import com.example.vivo_backend.exception.MyException;
 import com.example.vivo_backend.mapper.CardMapper;
@@ -11,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+
+import java.util.List;
 
 @Service
 public class CardServiceImpl implements CardService {
@@ -44,5 +47,12 @@ public class CardServiceImpl implements CardService {
             throw new BadRequestException("没有相应的card");
         }
         return card.toCardVO();
+    }
+
+    @Override
+    public List<Card> getAllCard(int userId) {
+        QueryWrapper<Card> wrapper = new QueryWrapper<>();
+        wrapper.eq("user_id", userId);
+        return cardMapper.selectList(wrapper);
     }
 }

@@ -16,8 +16,6 @@ import java.sql.Date;
 @AllArgsConstructor
 @ApiModel
 public class CardVO {
-    @ApiModelProperty(value = "卡片id", example = "1")
-    private int cardId;
 
     @ApiModelProperty(value = "卡片所属用户id", example = "1")
     private int userId;
@@ -30,7 +28,6 @@ public class CardVO {
 
     public Card toCard(){
         return Card.builder()
-                .cardId(cardId)
                 .userId(userId)
                 .city(city)
                 .createTime(createTime)
