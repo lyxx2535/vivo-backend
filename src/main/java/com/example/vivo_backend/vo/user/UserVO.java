@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel
-public class LoginForm {
+public class UserVO {
     @ApiModelProperty(value = "用户名", example = "123456")
     private String username;
     @ApiModelProperty(value = "密码", example = "123456")
