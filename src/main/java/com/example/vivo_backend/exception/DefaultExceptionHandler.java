@@ -1,11 +1,9 @@
 package com.example.vivo_backend.exception;
-import com.example.vivo_backend.utils.ExceptionUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 
 @RestControllerAdvice
 public class DefaultExceptionHandler {
@@ -29,6 +27,6 @@ public class DefaultExceptionHandler {
         }
 
         e.printStackTrace();
-        throw new Exception("服务器错误！");
+        throw new InternalServerError("服务器错误！");
     }
 }
