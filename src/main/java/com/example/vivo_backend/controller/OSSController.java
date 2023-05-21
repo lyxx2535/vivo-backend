@@ -1,5 +1,6 @@
 package com.example.vivo_backend.controller;
 
+import com.example.vivo_backend.service.PictureService;
 import com.example.vivo_backend.utils.OssUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -12,8 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 @Api(tags = "")
 @CrossOrigin
 public class OSSController {
+
     @Autowired
     private OssUtil ossUtil;
+
+    @Autowired
+    private PictureService pictureService;
 
     //处理文件上传
     @PostMapping("/imageUpload")
@@ -23,6 +28,7 @@ public class OSSController {
     public String homeImageUpload(@RequestParam("file") MultipartFile file) {
         try {
             String homeImage = ossUtil.checkImage(file);//此处是调用上传服务接口
+            pictureService.addPicture(homeImage);
             return homeImage;
         }catch (Exception e) {
             e.printStackTrace();
