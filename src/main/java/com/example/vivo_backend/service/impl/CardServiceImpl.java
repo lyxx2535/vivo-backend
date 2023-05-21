@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @Service
-@RestControllerAdvice
 public class CardServiceImpl implements CardService {
 
     @Autowired
@@ -38,13 +37,12 @@ public class CardServiceImpl implements CardService {
         cardMapper.updateById(card);
     }
 
-    @ExceptionHandler(MyException.class)
     @Override
     public CardVO getCard(int cardId) {
         Card card = cardMapper.selectById(cardId);
         if(card == null){
-            throw new BadRequestException("没有响应的card");
+            throw new BadRequestException("没有相应的card");
         }
-        return new CardVO(card.getCardId(),card.getUserId(), card.getCity(), card.getCreateTime());
+        return card.toCardVO();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.vivo_backend.controller;
 
 import com.example.vivo_backend.service.CardService;
+import com.example.vivo_backend.vo.ResponseVO;
 import com.example.vivo_backend.vo.card.CardVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,8 +21,8 @@ public class CardController {
     @GetMapping("/get")
     @ApiOperation(value = "提供卡片id获取完整卡片",notes = "卡片结构(int cardId, int userId, String city, Date createTime)" )
     @ApiParam(name = "cardId", value = "卡片Id", required = true)
-    public CardVO getCardById(int cardId){
-        return cardService.getCard(cardId);
+    public ResponseVO<CardVO> getCardById(int cardId){
+        return new ResponseVO<>(cardService.getCard(cardId));
     }
 
     @PostMapping("/insert")
@@ -30,7 +31,7 @@ public class CardController {
     public void addCard(@RequestBody CardVO cardVO){
         cardService.addCard(cardVO);
     }
-    @GetMapping("/delete")
+    @DeleteMapping("/delete")
     @ApiOperation(value = "删除一个卡片")
     @ApiParam(name = "cardId", value = "卡片Id", required = true)
     public void deleteCard(int cardId){

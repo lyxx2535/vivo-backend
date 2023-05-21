@@ -2,6 +2,7 @@ package com.example.vivo_backend.entity;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.example.vivo_backend.vo.card.CardVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -20,4 +21,13 @@ public class Card {
     private int userId;
     private String city;
     private Date createTime;
+
+    public CardVO toCardVO(){
+        CardVO cardVO = new CardVO();
+        cardVO.setCardId(cardId);
+        cardVO.setUserId(userId);
+        cardVO.setCity(city);
+        cardVO.setCreateTime(createTime);
+        return cardVO;
+    }
 }
