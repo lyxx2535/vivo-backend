@@ -10,13 +10,8 @@ spring:
     url: jdbc:mysql://121.43.109.60:9712/vivo?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
 mybatis-plus:
   mapper-locations: classpath*:mapper/*.xml
-  #配置别名扫描
   type-aliases-package: com.example.vivo_backend.entity
   configuration:
     map-underscore-to-camel-case: true # 驼峰自动映射
     cache-enabled: false # 禁用缓存
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  global-config:
-    db-config:
-      id-type: auto # 全局配置id自增
-      table-prefix: t_ #全局表名前缀配置

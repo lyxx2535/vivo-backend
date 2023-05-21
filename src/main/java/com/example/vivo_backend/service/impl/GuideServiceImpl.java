@@ -1,16 +1,15 @@
 package com.example.vivo_backend.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.vivo_backend.entity.Card;
 import com.example.vivo_backend.entity.Guide;
 import com.example.vivo_backend.exception.BadRequestException;
 import com.example.vivo_backend.exception.NotFoundException;
 import com.example.vivo_backend.mapper.GuideMapper;
 import com.example.vivo_backend.service.GuideService;
-import com.example.vivo_backend.vo.ResponseVO;
 import com.example.vivo_backend.vo.guide.GuideVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -48,18 +47,18 @@ public class GuideServiceImpl implements GuideService {
 
     @Override
     public List<GuideVO> getGuideListByUserId(int userId) {
-        try {
-            List<Guide> guides = guideMapper.selectList(new QueryWrapper<>(Guide.builder().userId(userId).build()));
-            System.out.println(guides.size());
+        try{
+            QueryWrapper<Guide> wrapper = new QueryWrapper<>();
+            wrapper.eq("user_id", userId);
+            List<Guide> guides = guideMapper.selectList(wrapper);
             List<GuideVO> result = new ArrayList<>(guides.size());
 
             for (Guide guide : guides) {
                 GuideVO guideVO = guide.toGuideVO();
-                System.out.println(guideVO);
                 result.add(guideVO);
             }
             return result;
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
             throw new NotFoundException(e.getMessage());
         }
@@ -67,17 +66,18 @@ public class GuideServiceImpl implements GuideService {
 
     @Override
     public List<GuideVO> getGuideListByCardId(int cardId) {
-        try {
-            List<Guide> guides = guideMapper.selectList(new QueryWrapper<>(Guide.builder().cardId(cardId).build()));
+        try{
+            QueryWrapper<Guide> wrapper = new QueryWrapper<>();
+            wrapper.eq("card_id", cardId);
+            List<Guide> guides = guideMapper.selectList(wrapper);
             List<GuideVO> result = new ArrayList<>(guides.size());
 
             for (Guide guide : guides) {
                 GuideVO guideVO = guide.toGuideVO();
                 result.add(guideVO);
             }
-
             return result;
-        } catch (Exception e) {
+        }catch (Exception e){
             e.printStackTrace();
             throw new NotFoundException(e.getMessage());
         }

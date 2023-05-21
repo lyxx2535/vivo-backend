@@ -26,7 +26,6 @@ public class Guide {
 
     public GuideVO toGuideVO(){
         GuideVO guideVO = new GuideVO();
-        guideVO.setGuideId(guideId);
         guideVO.setUserId(userId);
         guideVO.setCardId(cardId);
         guideVO.setType(type);

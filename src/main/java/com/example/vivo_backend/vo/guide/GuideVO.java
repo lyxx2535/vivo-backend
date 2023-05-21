@@ -14,8 +14,6 @@ import java.sql.Date;
 @AllArgsConstructor
 @ApiModel
 public class GuideVO {
-    @ApiModelProperty(value = "攻略id", example = "1")
-    private int guideId;
 
     @ApiModelProperty(value = "攻略所属用户id", example = "1")
     private int userId;
@@ -34,7 +32,6 @@ public class GuideVO {
 
     public Guide toGuide(){
         return Guide.builder()
-                .guideId(guideId)
                 .cardId(cardId)
                 .userId(userId)
                 .type(type)

@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.vivo_backend.mapper.GuideMapper">
-    <resultMap id="guideMap" type="guide">
-        <id column="auid" property="auId"/>
-        <result column="aname" property="aname"/>
-    </resultMap>
 
-    <select id="selectByDocid" resultMap="authorMap">
-        select a.*
-        from guide g
-                 join t_doc_author tda on a.auid = tda.auid
-        where tda.did = #{did}
-    </select>
 </mapper>
