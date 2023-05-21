@@ -48,11 +48,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void register(UserVO registerForm) {
+    public int register(UserVO registerForm) {
         if (existsTheUsername(registerForm.getUsername()))
             throw new BadRequestException("该用户名已经存在！");
         User user = registerForm.toUser();
         userMapper.insert(user);
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("username", user.getUsername());
+        return userMapper.selectOne(wrapper).getUserId();
     }
 
 }

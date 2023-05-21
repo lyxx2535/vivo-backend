@@ -4,6 +4,6 @@ import com.example.vivo_backend.vo.user.UserVO;
 
 public interface UserService {
     int login(UserVO loginForm);
-    void register(UserVO registerForm);
+    int register(UserVO registerForm);
     Boolean existsTheUsername(String username);
 }

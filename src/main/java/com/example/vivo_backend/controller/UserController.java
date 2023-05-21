@@ -31,8 +31,8 @@ public class UserController {
     @PostMapping("/register")
     @ApiOperation(value = "用户注册",
             notes = "该方法会检查是否有重复的用户名，没有则注册用户")
-    public void register(@RequestBody UserVO userVO) {
-        userService.register(userVO);
+    public ResponseVO<Integer> register(@RequestBody UserVO userVO) {
+        return new ResponseVO<>(userService.register(userVO));
     }
 
 }
