@@ -63,10 +63,4 @@ public class ReviewController {
         reviewService.updateReview(reviewVO);
     }
 
-    @GetMapping("/getTypeList")
-    @ApiOperation(value = "获得类型列表")
-    public ResponseVO<String[]> getTypes(){
-        String[] types = {"美食", "人文景点", "自然景点", "购物", "商务", "运动", "其他"};
-        return new ResponseVO<>(types);
-    }
 }
