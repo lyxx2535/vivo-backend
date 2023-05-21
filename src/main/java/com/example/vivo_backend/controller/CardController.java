@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/card")
 @Api(tags = "卡片")
+@CrossOrigin
 public class CardController {
 
     @Autowired

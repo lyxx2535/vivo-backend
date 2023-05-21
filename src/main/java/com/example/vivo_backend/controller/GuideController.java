@@ -16,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/guide")
 @Api(tags = "制定攻略")
+@CrossOrigin
 public class GuideController {
 
     @Autowired
