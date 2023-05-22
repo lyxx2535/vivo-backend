@@ -47,16 +47,16 @@ class ReviewTests {
         Assertions.assertEquals(1, card100NewReviews.size());
 
         int id = user0NewReviews.get(0).getReviewId();
-        Date date = user0NewReviews.get(0).getRealTime();
+        Date date = user0NewReviews.get(0).getReviewVO().getRealTime();
 
         RealReviewVO review = reviewController.getReviewByReviewId(id).getData();
-        Assertions.assertEquals(date, review.getRealTime());
+        Assertions.assertEquals(date, review.getReviewVO().getRealTime());
 
         reviewVO1.setReviewContent("newContent");
         reviewController.updateReview(reviewVO1);
 
         RealReviewVO newReview = reviewController.getReviewByReviewId(id).getData();
-        Assertions.assertEquals(review.getReviewContent(),newReview.getReviewContent());
+        Assertions.assertEquals(review.getReviewVO().getReviewContent(),newReview.getReviewVO().getReviewContent());
 
 
 
