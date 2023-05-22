@@ -103,26 +103,6 @@ public class OssUtil {
                 filenameExtension.equalsIgnoreCase(".png")) {
             return "image/jpg";
         }
-        if (filenameExtension.equalsIgnoreCase(".html")) {
-            return "text/html";
-        }
-        if (filenameExtension.equalsIgnoreCase(".txt")) {
-            return "text/plain";
-        }
-        if (filenameExtension.equalsIgnoreCase(".vsd")) {
-            return "application/vnd.visio";
-        }
-        if (filenameExtension.equalsIgnoreCase(".pptx") ||
-                filenameExtension.equalsIgnoreCase(".ppt")) {
-            return "application/vnd.ms-powerpoint";
-        }
-        if (filenameExtension.equalsIgnoreCase(".docx") ||
-                filenameExtension.equalsIgnoreCase(".doc")) {
-            return "application/msword";
-        }
-        if (filenameExtension.equalsIgnoreCase(".xml")) {
-            return "text/xml";
-        }
         return "image/jpg";
     }
 
@@ -157,27 +137,6 @@ public class OssUtil {
             return url.toString();
         }
         return null;
-    }
-
-    /**
-     * 多图片上传
-     * @param fileList
-     * @return
-     */
-    public String checkList(List<MultipartFile> fileList) {
-        String  fileUrl = "";
-        String  str = "";
-        StringBuilder photoUrl = new StringBuilder();
-        for(int i = 0;i< fileList.size();i++){
-            fileUrl = uploadImg2Oss(fileList.get(i));
-            str = getImgUrl(fileUrl);
-            if(i == 0){
-                photoUrl = new StringBuilder(str);
-            }else {
-                photoUrl.append(",").append(str);
-            }
-        }
-        return photoUrl.toString().trim();
     }
 
     /**
