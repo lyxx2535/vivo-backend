@@ -5,7 +5,7 @@ import com.example.vivo_backend.controller.ReportController;
 import com.example.vivo_backend.controller.ReviewController;
 import com.example.vivo_backend.vo.GuideVO;
 import com.example.vivo_backend.vo.ReportVO;
-import com.example.vivo_backend.vo.Review.ReviewVO;
+import com.example.vivo_backend.vo.review.ReviewVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.sql.Date;
 
 @SpringBootTest
-public class ReportTests {
+class ReportTests {
     @Autowired
     private ReportController reportController;
     @Autowired

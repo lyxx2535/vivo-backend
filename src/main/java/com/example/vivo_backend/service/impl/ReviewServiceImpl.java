@@ -8,8 +8,8 @@ import com.example.vivo_backend.exception.NotFoundException;
 import com.example.vivo_backend.mapper.PictureMapper;
 import com.example.vivo_backend.mapper.ReviewMapper;
 import com.example.vivo_backend.service.ReviewService;
-import com.example.vivo_backend.vo.Review.RealReviewVO;
-import com.example.vivo_backend.vo.Review.ReviewVO;
+import com.example.vivo_backend.vo.review.RealReviewVO;
+import com.example.vivo_backend.vo.review.ReviewVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -5,7 +5,7 @@ import com.example.vivo_backend.service.GuideService;
 import com.example.vivo_backend.service.ReportService;
 import com.example.vivo_backend.service.ReviewService;
 import com.example.vivo_backend.vo.ReportVO;
-import com.example.vivo_backend.vo.Review.RealReviewVO;
+import com.example.vivo_backend.vo.review.RealReviewVO;
 import com.example.vivo_backend.vo.TagVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

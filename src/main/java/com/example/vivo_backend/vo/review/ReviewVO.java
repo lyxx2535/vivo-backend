@@ -1,4 +1,4 @@
-package com.example.vivo_backend.vo.Review;
+package com.example.vivo_backend.vo.review;
 
 import com.example.vivo_backend.entity.Review;
 import io.swagger.annotations.ApiModel;
@@ -6,7 +6,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import java.util.List;
 
 import java.sql.Date;
 
@@ -14,9 +13,8 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel
-public class RealReviewVO {
-    @ApiModelProperty(value = "游记id", example = "1")
-    private int reviewId;
+public class ReviewVO {
+
     @ApiModelProperty(value = "游记所属用户id", example = "1")
     private int userId;
     @ApiModelProperty(value = "游记所属卡片id", example = "1")
@@ -29,18 +27,15 @@ public class RealReviewVO {
     private Date realTime;
     @ApiModelProperty(value = "游记内容",example = "老门东的南京大牌档很好吃")
     private String reviewContent;
-    @ApiModelProperty(value = "图片列表")
-    private List<String> picUrls;
 
-    public RealReviewVO(Review review, List<String> urls){
-        reviewId = review.getReviewId();
-        userId = review.getUserId();
-        cardId = review.getCardId();
-        title = review.getTitle();
-        type = review.getType();
-        realTime = review.getRealTime();
-        reviewContent = review.getReviewContent();
-        picUrls = urls;
+    public Review toReview(){
+        return Review.builder()
+                .cardId(cardId)
+                .userId(userId)
+                .title(title)
+                .type(type)
+                .realTime(realTime)
+                .reviewContent(reviewContent)
+                .build();
     }
-
 }

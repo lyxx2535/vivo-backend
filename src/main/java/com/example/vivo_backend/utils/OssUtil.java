@@ -92,36 +92,36 @@ public class OssUtil {
         return ret;
     }
 
-    public static String getcontentType(String FilenameExtension) {
-        if (FilenameExtension.equalsIgnoreCase(".bmp")) {
+    public static String getcontentType(String filenameExtension) {
+        if (filenameExtension.equalsIgnoreCase(".bmp")) {
             return "image/bmp";
         }
-        if (FilenameExtension.equalsIgnoreCase(".gif")) {
+        if (filenameExtension.equalsIgnoreCase(".gif")) {
             return "image/gif";
         }
-        if (FilenameExtension.equalsIgnoreCase(".jpeg") ||
-                FilenameExtension.equalsIgnoreCase(".jpg") ||
-                FilenameExtension.equalsIgnoreCase(".png")) {
+        if (filenameExtension.equalsIgnoreCase(".jpeg") ||
+                filenameExtension.equalsIgnoreCase(".jpg") ||
+                filenameExtension.equalsIgnoreCase(".png")) {
             return "image/jpg";
         }
-        if (FilenameExtension.equalsIgnoreCase(".html")) {
+        if (filenameExtension.equalsIgnoreCase(".html")) {
             return "text/html";
         }
-        if (FilenameExtension.equalsIgnoreCase(".txt")) {
+        if (filenameExtension.equalsIgnoreCase(".txt")) {
             return "text/plain";
         }
-        if (FilenameExtension.equalsIgnoreCase(".vsd")) {
+        if (filenameExtension.equalsIgnoreCase(".vsd")) {
             return "application/vnd.visio";
         }
-        if (FilenameExtension.equalsIgnoreCase(".pptx") ||
-                FilenameExtension.equalsIgnoreCase(".ppt")) {
+        if (filenameExtension.equalsIgnoreCase(".pptx") ||
+                filenameExtension.equalsIgnoreCase(".ppt")) {
             return "application/vnd.ms-powerpoint";
         }
-        if (FilenameExtension.equalsIgnoreCase(".docx") ||
-                FilenameExtension.equalsIgnoreCase(".doc")) {
+        if (filenameExtension.equalsIgnoreCase(".docx") ||
+                filenameExtension.equalsIgnoreCase(".doc")) {
             return "application/msword";
         }
-        if (FilenameExtension.equalsIgnoreCase(".xml")) {
+        if (filenameExtension.equalsIgnoreCase(".xml")) {
             return "text/xml";
         }
         return "image/jpg";
@@ -129,11 +129,11 @@ public class OssUtil {
 
     /**
      * 获取图片路径
-     * @param fileUrl
+     * @param fileUrl 文件路径
      * @return
      */
     public String getImgUrl(String fileUrl) {
-        if (!StringUtils.isEmpty(fileUrl)) {
+        if (!Objects.equals(fileUrl, "")) {
             String[] split = fileUrl.split("/");
             String url =  this.getUrl(this.filedir + split[split.length - 1]);
             String[] spilt1 = url.split("\\?");

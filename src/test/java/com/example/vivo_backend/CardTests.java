@@ -15,7 +15,7 @@ import java.sql.Date;
 import java.util.List;
 
 @SpringBootTest
-public class CardTests {
+class CardTests {
     @Autowired
     CardController cardController;
 

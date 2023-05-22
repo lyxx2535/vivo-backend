@@ -1,8 +1,8 @@
 package com.example.vivo_backend;
 
 import com.example.vivo_backend.controller.ReviewController;
-import com.example.vivo_backend.vo.Review.RealReviewVO;
-import com.example.vivo_backend.vo.Review.ReviewVO;
+import com.example.vivo_backend.vo.review.RealReviewVO;
+import com.example.vivo_backend.vo.review.ReviewVO;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.sql.Date;
 import java.util.List;
 
 @SpringBootTest
-public class ReviewTests {
+class ReviewTests {
 
     @Autowired
     ReviewController reviewController;

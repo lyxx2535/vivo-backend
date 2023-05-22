@@ -1,7 +1,7 @@
 package com.example.vivo_backend.service;
 
-import com.example.vivo_backend.vo.Review.RealReviewVO;
-import com.example.vivo_backend.vo.Review.ReviewVO;
+import com.example.vivo_backend.vo.review.RealReviewVO;
+import com.example.vivo_backend.vo.review.ReviewVO;
 
 import java.util.List;
 

@@ -16,7 +16,7 @@ import java.sql.Date;
 import java.util.List;
 
 @SpringBootTest
-public class GuideTests {
+class GuideTests {
     @Autowired
     GuideController guideController;
 

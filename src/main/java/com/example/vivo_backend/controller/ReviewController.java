@@ -1,8 +1,8 @@
 package com.example.vivo_backend.controller;
 
 import com.example.vivo_backend.service.ReviewService;
-import com.example.vivo_backend.vo.Review.RealReviewVO;
-import com.example.vivo_backend.vo.Review.ReviewVO;
+import com.example.vivo_backend.vo.review.RealReviewVO;
+import com.example.vivo_backend.vo.review.ReviewVO;
 import com.example.vivo_backend.vo.ResponseVO;
 
 import io.swagger.annotations.Api;
