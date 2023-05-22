@@ -16,7 +16,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int login(UserVO loginForm) {
-        String username = loginForm.getUsername(), password = loginForm.getPassword();
+        String username = loginForm.getUsername();
+        String password = loginForm.getPassword();
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("username", username);
 

@@ -53,7 +53,7 @@ public class OssUtil {
             String name = RANDOM.nextInt(10000) + System.currentTimeMillis() + substring;
             InputStream inputStream = file.getInputStream();
             this.uploadFile2OSS(inputStream, name);
-            return name;//RestResultGenerator.createSuccessResult(name);
+            return name;
         } catch (Exception e) {
             return "上传失败";
         }
@@ -83,9 +83,7 @@ public class OssUtil {
             e.getMessage();
         } finally {
             try {
-                if (instream != null) {
-                    instream.close();
-                }
+                instream.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
