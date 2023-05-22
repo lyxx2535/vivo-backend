@@ -22,7 +22,8 @@ public class ExceptionUtil {
         pout.close();
         try {
             out.close();
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            return e.getMessage();
         }
         return ret;
     }
