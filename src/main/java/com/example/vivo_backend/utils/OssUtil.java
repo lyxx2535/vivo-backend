@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 @Component
@@ -49,7 +50,7 @@ public class OssUtil {
         try {
             //为避免空指针异常，将代码放进try-catch
             String originalFilename = file.getOriginalFilename();
-            String substring = originalFilename.substring(originalFilename.lastIndexOf(".")).toLowerCase();
+            String substring = Objects.requireNonNull(originalFilename).substring(originalFilename.lastIndexOf(".")).toLowerCase();
             String name = RANDOM.nextInt(10000) + System.currentTimeMillis() + substring;
             InputStream inputStream = file.getInputStream();
             this.uploadFile2OSS(inputStream, name);

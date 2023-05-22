@@ -11,7 +11,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
 @SpringBootTest
-public class UserTests {
+class UserTests {
     @Autowired
     private UserController userController;
     @Test
