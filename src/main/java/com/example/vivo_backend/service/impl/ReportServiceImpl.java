@@ -36,7 +36,7 @@ public class ReportServiceImpl implements ReportService {
         List<RealReviewVO> reviews = reviewService.getReviewListByUserId(userId);
         List<TagVO>tagVOS = initTagVOList();
         for(RealReviewVO realReviewVO: reviews){
-            tagVOS.get(tags.get(realReviewVO.getType())).addOne();
+            tagVOS.get(tags.get(realReviewVO.getReviewVO().getType())).addOne();
         }
         return new ReportVO(tagVOS);
     }
