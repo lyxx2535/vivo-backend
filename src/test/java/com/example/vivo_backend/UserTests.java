@@ -21,7 +21,7 @@ class UserTests {
         UserVO userVO = new UserVO("notInDB","md5CypherString");
         try{
             userController.login(userVO);
-            Assertions.assertEquals(0,1);
+            Assertions.fail();
         }catch (BadRequestException e){
 
         }
@@ -31,12 +31,12 @@ class UserTests {
             int id2 = userController.login(userVO).getData();
             Assertions.assertEquals(id,id2);
         }catch (Exception e){
-            Assertions.assertEquals(0,1);
+            Assertions.fail();
         }
 
         try{
             userController.register(userVO);
-            Assertions.assertEquals(0,1);
+            Assertions.fail();
         }catch (BadRequestException e){
 
         }

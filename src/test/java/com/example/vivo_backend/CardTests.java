@@ -44,7 +44,7 @@ class CardTests {
 
         try {
             cardController.getCardById(lastCard.getCardId());
-            Assertions.assertEquals(0,1);
+            Assertions.fail();
         }catch (BadRequestException e){
 
         }

@@ -53,20 +53,20 @@ class GuideTests {
 
         try{
             guideController.getGuideByGuideId(-1);
-            Assertions.assertEquals(0,1);
+            Assertions.fail();
         }catch (BadRequestException e){
             Assertions.assertEquals("没有相应的guide",e.getMessage());
         }
 
         try{
             guideController.getGuideListByUserId(-1);
-            Assertions.assertEquals(0,1);
+            Assertions.fail();
         }catch (NotFoundException e){
             Assertions.assertEquals("该用户没有攻略",e.getMessage());
         }
         try{
             guideController.getGuideListByCardId(-1);
-            Assertions.assertEquals(0,1);
+            Assertions.fail();
         }catch (NotFoundException e){
             Assertions.assertEquals("该卡片没有攻略",e.getMessage());
         }
