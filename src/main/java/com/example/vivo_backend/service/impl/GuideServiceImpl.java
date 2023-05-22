@@ -29,12 +29,6 @@ public class GuideServiceImpl implements GuideService {
     }
 
     @Override
-    public void updateGuide(GuideVO guideVO) {
-        Guide guide = guideVO.toGuide();
-        guideMapper.updateById(guide);
-    }
-
-    @Override
     public GuideVO getGuideByGuideId(int guideId) {
         Guide guide = guideMapper.selectById(guideId);
         if(guide == null){

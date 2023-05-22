@@ -63,11 +63,6 @@ public class ReviewServiceImpl implements ReviewService {
         reviewMapper.deleteById(reviewId);
     }
 
-    @Override
-    public void updateReview(ReviewVO reviewVO) {
-        Review review = reviewVO.toReview();
-        reviewMapper.updateById(review);
-    }
 
     @Override
     public RealReviewVO getReviewByReviewId(int reviewId) {

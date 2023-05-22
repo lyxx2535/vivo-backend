@@ -8,7 +8,6 @@ import java.util.List;
 public interface ReviewService {
     void addReview(ReviewVO reviewVO);
     void deleteReview(int reviewId);
-    void updateReview(ReviewVO reviewVO);
     RealReviewVO getReviewByReviewId(int reviewId);
     List<RealReviewVO> getReviewListByUserId(int userId);
     List<RealReviewVO> getReviewListByCardId(int cardId);

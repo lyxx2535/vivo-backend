@@ -52,12 +52,6 @@ class ReviewTests {
         RealReviewVO review = reviewController.getReviewByReviewId(id).getData();
         Assertions.assertEquals(date, review.getReviewVO().getRealTime());
 
-        reviewVO1.setReviewContent("newContent");
-        reviewController.updateReview(reviewVO1);
-
-        RealReviewVO newReview = reviewController.getReviewByReviewId(id).getData();
-        Assertions.assertEquals(review.getReviewVO().getReviewContent(),newReview.getReviewVO().getReviewContent());
-
 
 
 

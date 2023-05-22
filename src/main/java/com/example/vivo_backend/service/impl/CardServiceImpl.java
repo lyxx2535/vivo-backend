@@ -31,12 +31,6 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public void updateCard(CardVO cardVO) {
-        Card card = cardVO.toCard();
-        cardMapper.updateById(card);
-    }
-
-    @Override
     public Card getCard(int cardId) {
         Card card = cardMapper.selectById(cardId);
         if(card == null){

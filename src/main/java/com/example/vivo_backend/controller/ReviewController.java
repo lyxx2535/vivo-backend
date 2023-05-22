@@ -56,11 +56,4 @@ public class ReviewController {
         reviewService.deleteReview(reviewId);
     }
 
-    @PostMapping("/update")
-    @ApiOperation(value = "更新一个游记")
-    @ApiParam(name = "reviewVO", value = "游记", required = true)
-    public void updateReview(@RequestBody ReviewVO reviewVO){
-        reviewService.updateReview(reviewVO);
-    }
-
 }

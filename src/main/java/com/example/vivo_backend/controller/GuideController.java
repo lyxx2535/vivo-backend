@@ -56,13 +56,6 @@ public class GuideController {
         guideService.deleteGuide(guideId);
     }
 
-    @PostMapping("/update")
-    @ApiOperation(value = "更新一个攻略")
-    @ApiParam(name = "guideVO", value = "攻略", required = true)
-    public void updateGuide(@RequestBody GuideVO guideVO){
-        guideService.updateGuide(guideVO);
-    }
-
     @GetMapping("/getTypeList")
     @ApiOperation(value = "获得类型列表")
     public ResponseVO<String[]> getTypes(){

@@ -8,7 +8,6 @@ import java.util.List;
 public interface GuideService {
     void addGuide(GuideVO guideVO);
     void deleteGuide(int guideId);
-    void updateGuide(GuideVO guideVO);
     GuideVO getGuideByGuideId(int guideId);
     List<Guide> getGuideListByUserId(int userId);
     List<Guide> getGuideListByCardId(int cardId);

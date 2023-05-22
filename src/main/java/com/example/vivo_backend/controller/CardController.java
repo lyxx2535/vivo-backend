@@ -41,13 +41,6 @@ public class CardController {
     public void deleteCard(int cardId){
         cardService.deleteCard(cardId);
     }
-    @PostMapping("/update")
-    @ApiOperation(value = "更新一个卡片")
-    @ApiParam(name = "cardVO", value = "卡片", required = true)
-    public void updateCard(@RequestBody CardVO cardVO){
-        cardService.updateCard(cardVO);
-    }
-
     @GetMapping("/all")
     @ApiOperation(value = "获取某用户所有卡片")
     @ApiParam(name = "cardVO", value = "卡片", required = true)
