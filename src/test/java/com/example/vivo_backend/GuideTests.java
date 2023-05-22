@@ -72,6 +72,12 @@ public class GuideTests {
             Assertions.assertEquals("该卡片没有攻略",e.getMessage());
         }
 
+        guideVO2.setType("自然景点");
+        guideController.updateGuide(guideVO2);
+        GuideVO newGuideVO = guideController.getGuideByGuideId(user0Guides.get(1).getGuideId()).getData();
+        Assertions.assertEquals("美食", newGuideVO.getType());
+
+
 
     }
 }

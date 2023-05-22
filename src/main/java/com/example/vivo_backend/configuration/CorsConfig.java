@@ -13,7 +13,6 @@ public class CorsConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-//            .allowedOrigins("*")
                 .allowedOriginPatterns("*")// 设置允许跨域请求的域名
                 .allowedHeaders("*")// 设置允许的请求头
                 .allowCredentials(true)// 是否允许证书
@@ -26,7 +25,6 @@ public class CorsConfig implements WebMvcConfigurer {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        // config.addAllowedOrigin("*");
         config.addAllowedOriginPattern("*");
         config.addAllowedHeader("*");
         config.addAllowedMethod("*");
