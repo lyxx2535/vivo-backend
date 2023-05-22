@@ -3,10 +3,7 @@ package com.example.vivo_backend.vo.review;
 import com.example.vivo_backend.entity.Review;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.sql.Date;
 
@@ -14,6 +11,7 @@ import java.sql.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel
+@Builder
 public class ReviewVO {
 
     @ApiModelProperty(value = "游记所属用户id", example = "1")

@@ -24,12 +24,14 @@ public class RealReviewVO {
 
     public RealReviewVO(Review review, List<String> urls){
         reviewId = review.getReviewId();
-        reviewVO.setReviewContent(review.getReviewContent());
-        reviewVO.setRealTime(review.getRealTime());
-        reviewVO.setType(review.getType());
-        reviewVO.setTitle(review.getTitle());
-        reviewVO.setUserId(review.getUserId());
-        reviewVO.setCardId(review.getCardId());
+        reviewVO = ReviewVO.builder()
+                .cardId(review.getCardId())
+                .userId(review.getUserId())
+                .title(review.getTitle())
+                .type(review.getType())
+                .realTime(review.getRealTime())
+                .reviewContent(review.getReviewContent())
+                .build();
         picUrls = urls;
     }
 
