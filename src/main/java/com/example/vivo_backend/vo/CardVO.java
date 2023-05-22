@@ -1,8 +1,7 @@
 package com.example.vivo_backend.vo;
 
 import com.example.vivo_backend.entity.Card;
-import com.example.vivo_backend.entity.User;
-import io.swagger.annotations.Api;
+
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;

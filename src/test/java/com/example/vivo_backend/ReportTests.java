@@ -3,7 +3,6 @@ package com.example.vivo_backend;
 import com.example.vivo_backend.controller.GuideController;
 import com.example.vivo_backend.controller.ReportController;
 import com.example.vivo_backend.controller.ReviewController;
-import com.example.vivo_backend.service.ReportService;
 import com.example.vivo_backend.vo.GuideVO;
 import com.example.vivo_backend.vo.ReportVO;
 import com.example.vivo_backend.vo.Review.ReviewVO;

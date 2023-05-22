@@ -5,7 +5,6 @@ import com.example.vivo_backend.entity.Guide;
 import com.example.vivo_backend.exception.BadRequestException;
 import com.example.vivo_backend.exception.NotFoundException;
 import com.example.vivo_backend.vo.GuideVO;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

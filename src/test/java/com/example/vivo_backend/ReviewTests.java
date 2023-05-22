@@ -1,7 +1,6 @@
 package com.example.vivo_backend;
 
 import com.example.vivo_backend.controller.ReviewController;
-import com.example.vivo_backend.entity.Review;
 import com.example.vivo_backend.vo.Review.RealReviewVO;
 import com.example.vivo_backend.vo.Review.ReviewVO;
 import org.junit.jupiter.api.Assertions;
