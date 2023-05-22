@@ -36,8 +36,8 @@ public class ReviewTests {
         List<RealReviewVO>card100Reviews = reviewController.getReviewListByCardId(100).getData();
 
 
-        Assertions.assertEquals(user0Reviews.size(),4);
-        Assertions.assertEquals(card100Reviews.size(),2);
+        Assertions.assertEquals(4, user0Reviews.size());
+        Assertions.assertEquals(2, card100Reviews.size());
 
         reviewController.deleteReview(user0Reviews.get(0).getReviewId());
 

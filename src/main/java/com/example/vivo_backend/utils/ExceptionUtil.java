@@ -5,14 +5,14 @@ import java.io.PrintStream;
 
 public class ExceptionUtil {
 
-    private static final String name = "com.example.vivo_backend";
+    private static final String NAME = "com.example.vivo_backend";
 
-    private static final String lineSep = "\r\n";
+    private static final String LINE_SEP = "\r\n";
 
-    private static final String errMsg = "出现了异常情况如下：" + lineSep + lineSep +
-            "出错原因：" + lineSep + "%s" + lineSep + lineSep +
-            "出错位置：" + lineSep + "%s" + lineSep + lineSep +
-            "详细出错位置：" + lineSep + "%s" + lineSep + lineSep;
+    private static final String ERR_MSG = "出现了异常情况如下：" + LINE_SEP + LINE_SEP +
+            "出错原因：" + LINE_SEP + "%s" + LINE_SEP + LINE_SEP +
+            "出错位置：" + LINE_SEP + "%s" + LINE_SEP + LINE_SEP +
+            "详细出错位置：" + LINE_SEP + "%s" + LINE_SEP + LINE_SEP;
 
     public static String getExceptionAllInformation(Exception ex) {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -33,8 +33,8 @@ public class ExceptionUtil {
         String error = getExceptionAllInformation(ex);
         String[] errPart = error.split(System.lineSeparator());
         for (String err : errPart) {
-            if (err.contains(name))
-                res.append(err).append(lineSep);
+            if (err.contains(NAME))
+                res.append(err).append(LINE_SEP);
         }
         return res.toString();
     }
@@ -44,11 +44,11 @@ public class ExceptionUtil {
         String error = getExceptionAllInformation(ex);
         String[] errPart = error.split(System.lineSeparator());
         for (String err : errPart) {
-            if (err.contains(name))
+            if (err.contains(NAME))
                 res.append(err);
         }
 
-        return String.format(errMsg, ex.getMessage(), res.toString(), error);
+        return String.format(ERR_MSG, ex.getMessage(), res.toString(), error);
     }
 
 }

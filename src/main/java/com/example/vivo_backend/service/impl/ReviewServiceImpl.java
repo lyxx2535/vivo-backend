@@ -25,9 +25,11 @@ public class ReviewServiceImpl implements ReviewService {
     @Autowired
     private PictureMapper pictureMapper;
 
+    private static final String COLUMN_REVIEW_ID = "review_id";
+
     public List<String> getPicUrlsByReviewId(int reviewId){
         QueryWrapper<Picture> wrapper = new QueryWrapper<>();
-        wrapper.eq("review_id", reviewId);
+        wrapper.eq(COLUMN_REVIEW_ID, reviewId);
         List<Picture> pictures = pictureMapper.selectList(wrapper);
         List<String> result = new ArrayList<>();
         for(Picture picture: pictures){
@@ -38,7 +40,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     public void setAbsentPicture(int reviewId){
         QueryWrapper<Picture> wrapper = new QueryWrapper<>();
-        wrapper.eq("review_id", -1);
+        wrapper.eq(COLUMN_REVIEW_ID, -1);
         List<Picture> pictures = pictureMapper.selectList(wrapper);
         for(Picture picture: pictures) {
             picture.setReviewId(reviewId);
@@ -51,7 +53,7 @@ public class ReviewServiceImpl implements ReviewService {
         reviewMapper.insert(review);
         //获得最新加入的review的reviewId
         QueryWrapper<Review> wrapper = new QueryWrapper<>();
-        List<Review> reviews = reviewMapper.selectList(wrapper.orderByDesc("review_id"));
+        List<Review> reviews = reviewMapper.selectList(wrapper.orderByDesc(COLUMN_REVIEW_ID));
         //补全picture缺失的reviewId
         setAbsentPicture(reviews.get(0).getReviewId());
     }

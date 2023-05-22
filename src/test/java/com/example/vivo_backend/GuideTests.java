@@ -37,15 +37,15 @@ public class GuideTests {
         List<Guide>card100Guides = guideController.getGuideListByCardId(100).getData();
 
 
-        Assertions.assertEquals(user0Guides.size(),4);
-        Assertions.assertEquals(card100Guides.size(),2);
+        Assertions.assertEquals(4, user0Guides.size());
+        Assertions.assertEquals(2, card100Guides.size());
 
         guideController.deleteGuide(user0Guides.get(0).getGuideId());
 
         List<Guide>user0NewGuides = guideController.getGuideListByUserId(0).getData();
         List<Guide>card100NewGuides = guideController.getGuideListByCardId(100).getData();
-        Assertions.assertEquals(user0NewGuides.size(),3);
-        Assertions.assertEquals(card100NewGuides.size(),1);
+        Assertions.assertEquals(3, user0NewGuides.size());
+        Assertions.assertEquals(1, card100NewGuides.size());
 
         String[] actualTypes = {"美食", "人文景点", "自然景点", "购物", "商务", "运动", "其他"};
         String []types = guideController.getTypes().getData();

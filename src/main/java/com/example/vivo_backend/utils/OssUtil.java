@@ -136,10 +136,8 @@ public class OssUtil {
         if (!StringUtils.isEmpty(fileUrl)) {
             String[] split = fileUrl.split("/");
             String url =  this.getUrl(this.filedir + split[split.length - 1]);
-//                log.info(url);
             String[] spilt1 = url.split("\\?");
             return spilt1[0];
-//            return url;
         }
         return null;
     }
@@ -152,7 +150,7 @@ public class OssUtil {
      */
     public String getUrl(String key) {
         // 设置URL过期时间为10年  3600l* 1000*24*365*10
-        Date expiration = new Date(new Date().getTime() + 3600l * 1000 * 24 * 365 * 10);
+        Date expiration = new Date(new Date().getTime() + 3600L * 1000 * 24 * 365 * 10);
         // 生成URL
         OSSClient ossClient = new OSSClient(endpoint, accessKeyId, accessKeySecret);
         URL url = ossClient.generatePresignedUrl(bucketName, key, expiration);
@@ -170,17 +168,17 @@ public class OssUtil {
     public String checkList(List<MultipartFile> fileList) {
         String  fileUrl = "";
         String  str = "";
-        String  photoUrl = "";
+        StringBuilder photoUrl = new StringBuilder();
         for(int i = 0;i< fileList.size();i++){
             fileUrl = uploadImg2Oss(fileList.get(i));
             str = getImgUrl(fileUrl);
             if(i == 0){
-                photoUrl = str;
+                photoUrl = new StringBuilder(str);
             }else {
-                photoUrl += "," + str;
+                photoUrl.append(",").append(str);
             }
         }
-        return photoUrl.trim();
+        return photoUrl.toString().trim();
     }
 
     /**

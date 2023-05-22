@@ -14,12 +14,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserMapper userMapper;
 
+    private static final String COLUMN_USERNAME = "username";
+
     @Override
     public int login(UserVO loginForm) {
         String username = loginForm.getUsername();
         String password = loginForm.getPassword();
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("username", username);
+        wrapper.eq(COLUMN_USERNAME, username);
 
         User user;
         try {//找到的用户名多于一条
@@ -42,7 +44,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public Boolean existsTheUsername(String username) {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("username", username);
+        wrapper.eq(COLUMN_USERNAME, username);
 
         User user = userMapper.selectOne(wrapper);//如果能找到，说明用户名已经存在
         return user != null;
@@ -50,12 +52,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int register(UserVO registerForm) {
-        if (existsTheUsername(registerForm.getUsername()))
+        if (Boolean.TRUE.equals(existsTheUsername(registerForm.getUsername())))
             throw new BadRequestException("该用户名已经存在！");
         User user = registerForm.toUser();
         userMapper.insert(user);
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("username", user.getUsername());
+        wrapper.eq(COLUMN_USERNAME, user.getUsername());
         return userMapper.selectOne(wrapper).getUserId();
     }
 

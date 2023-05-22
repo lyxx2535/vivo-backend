@@ -46,14 +46,14 @@ public class ReportTests {
         reviewController.addReview(reviewVO4);
 
         ReportVO reportVO = reportController.getGuideReport(0).getData();
-        Assertions.assertEquals(reportVO.getTagReport().get(0).getNum(),2);
-        Assertions.assertEquals(reportVO.getTagReport().get(1).getNum(),1);
-        Assertions.assertEquals(reportVO.getTagReport().get(2).getNum(),1);
+        Assertions.assertEquals(2, reportVO.getTagReport().get(0).getNum());
+        Assertions.assertEquals(1, reportVO.getTagReport().get(1).getNum());
+        Assertions.assertEquals(1, reportVO.getTagReport().get(2).getNum());
 
         ReportVO reportVO1 = reportController.getReviewReport(0).getData();
-        Assertions.assertEquals(reportVO1.getTagReport().get(0).getNum(),2);
-        Assertions.assertEquals(reportVO1.getTagReport().get(2).getNum(),1);
-        Assertions.assertEquals(reportVO1.getTagReport().get(6).getNum(),1);
+        Assertions.assertEquals(2, reportVO1.getTagReport().get(0).getNum());
+        Assertions.assertEquals(1, reportVO1.getTagReport().get(2).getNum());
+        Assertions.assertEquals(1, reportVO1.getTagReport().get(6).getNum());
 
     }
 
