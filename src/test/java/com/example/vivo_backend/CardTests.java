@@ -37,16 +37,17 @@ class CardTests {
         // 比较lastCard 和 lastCardFromSelect
         Assertions.assertEquals(lastCard.getCreateTime(),lastCardFromSelect.getCreateTime());
 
-        cardController.deleteCard(lastCard.getCardId());
+        int lastCardId = lastCard.getCardId();
+        cardController.deleteCard(lastCardId);
         List<Card> cardsAfterDelete = cardController.getAllCard(1).getData();
         // 比较cardsAfterDelete和oldCards
         Assertions.assertEquals(cardsAfterDelete.size(),oldCards.size());
 
         try {
-            cardController.getCardById(lastCard.getCardId());
+            cardController.getCardById(lastCardId);
             Assertions.fail();
         }catch (BadRequestException e){
-
+            Assertions.assertEquals("没有相应的card", e.getMessage());
         }
 
 

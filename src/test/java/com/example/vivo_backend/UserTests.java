@@ -19,11 +19,12 @@ class UserTests {
     @Rollback(value = true)
     void userTest(){
         UserVO userVO = new UserVO("notInDB","md5CypherString");
+        UserVO wrongPasswd = new UserVO("notInDB","wrong");
         try{
             userController.login(userVO);
             Assertions.fail();
         }catch (BadRequestException e){
-
+            Assertions.assertEquals("该用户尚未注册！",e.getMessage());
         }
 
         try {
@@ -35,10 +36,18 @@ class UserTests {
         }
 
         try{
+            userController.login(wrongPasswd);
+            Assertions.fail();
+        }catch (BadRequestException e){
+            Assertions.assertEquals("密码错误！",e.getMessage());
+        }
+
+
+        try{
             userController.register(userVO);
             Assertions.fail();
         }catch (BadRequestException e){
-
+            Assertions.assertEquals("该用户名已经存在！", e.getMessage());
         }
     }
 }

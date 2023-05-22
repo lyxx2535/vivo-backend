@@ -23,14 +23,9 @@ public class UserServiceImpl implements UserService {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq(COLUMN_USERNAME, username);
 
-        User user;
-        try {//找到的用户名多于一条
-            user = userMapper.selectOne(wrapper);
-        } catch (Exception e) {
-            throw new BadRequestException("该用户名已被使用！");
-        }
+        User user = userMapper.selectOne(wrapper);
         if (user == null)
-            throw new BadRequestException("该用户名尚未注册！");
+            throw new BadRequestException("该用户尚未注册！");
 
         if (password == null || !password.equals(user.getPassword()))
             throw new BadRequestException("密码错误！");
